@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  **/
 public class DiscountHolder {
 
-    private BigDecimal discountedAmount = BigDecimal.ZERO;
+    private BigDecimal discountedAmount;
 
     public DiscountHolder(BigDecimal discountedAmount) {
         this.discountedAmount = discountedAmount;

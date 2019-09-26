@@ -4,9 +4,11 @@ import com.brnbyk.shoppingcart.calculator.impl.DeliveryCostCalculator;
 import com.brnbyk.shoppingcart.discount.impl.CampaignDiscountStrategy;
 import com.brnbyk.shoppingcart.discount.impl.CouponDiscountStrategy;
 import com.brnbyk.shoppingcart.discount.impl.DiscountStrategyContext;
+import com.brnbyk.shoppingcart.printer.ShoppingCartStandardLoggerPrinter;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.brnbyk.shoppingcart.constants.Constants.COST_PER_DELIVERY;
 import static com.brnbyk.shoppingcart.constants.Constants.COST_PER_PRODUCT;
@@ -104,6 +106,14 @@ public class ShoppingCart implements Cart {
     }
 
     public void print() {
+        Map<String, List<CartItem>> groupedByCategories = getProducts()
+                .stream()
+                .collect(Collectors.groupingBy(cartItem -> cartItem.getProduct().getCategory().getTitle()));
+
+        ShoppingCartStandardLoggerPrinter shoppingCartStandardLoggerPrinter = new ShoppingCartStandardLoggerPrinter(groupedByCategories,
+                getTotalAmount(), getCampaignDiscount().add(getCouponDiscount()), getDeliveryCost());
+
+        shoppingCartStandardLoggerPrinter.print();
 
     }
 
