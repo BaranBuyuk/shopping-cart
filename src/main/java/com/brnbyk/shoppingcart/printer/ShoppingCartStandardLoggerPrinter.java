@@ -22,7 +22,10 @@ public class ShoppingCartStandardLoggerPrinter implements Printer {
     private Map<String, List<CartItem>> categories;
 
 
-    public ShoppingCartStandardLoggerPrinter(Map<String, List<CartItem>> categories, BigDecimal totalAmount, BigDecimal totalDiscountAmount, BigDecimal deliveryCost) {
+    public ShoppingCartStandardLoggerPrinter(Map<String, List<CartItem>> categories,
+                                             BigDecimal totalAmount,
+                                             BigDecimal totalDiscountAmount,
+                                             BigDecimal deliveryCost) {
         this.categories = categories;
         this.totalAmount = totalAmount;
         this.totalDiscountAmount = totalDiscountAmount;
