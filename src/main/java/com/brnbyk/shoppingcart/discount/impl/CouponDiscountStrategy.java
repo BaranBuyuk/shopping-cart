@@ -17,18 +17,18 @@ import static com.brnbyk.shoppingcart.constants.Constants.ONE_HUNDRED;
  **/
 public class CouponDiscountStrategy implements DiscountStrategy {
 
-    private CouponDiscountRule couponRuleEngine;
+    private CouponDiscountRule couponDiscountRule;
     private Coupon coupon;
 
     public CouponDiscountStrategy(ShoppingCart shoppingCart, Coupon coupon) {
         this.coupon = coupon;
-        couponRuleEngine = new CouponDiscountRule(shoppingCart);
+        couponDiscountRule = new CouponDiscountRule(shoppingCart);
     }
 
     @Override
     public void calculateDiscount(ShoppingCart shoppingCart) {
         BigDecimal appliedCouponAmount = BigDecimal.valueOf(0.00);
-        boolean isApplicableCoupon = couponRuleEngine.isApplicableDiscount(coupon);
+        boolean isApplicableCoupon = couponDiscountRule.isApplicableDiscount(coupon);
         if (isApplicableCoupon) {
             if (coupon.getDiscountType().equals(DiscountType.Amount)) {
                 appliedCouponAmount = coupon.getDiscountAmount();
