@@ -94,7 +94,7 @@ public class ShoppingCart implements Cart {
         return products.stream().map(CartItem::getTotalAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public void applyDiscounts(Campaign... campaigns) {
+    public void applyCampaigns(Campaign... campaigns) {
         DiscountStrategyContext discountStrategyContext = new DiscountStrategyContext(new CampaignDiscountStrategy(this, Arrays.asList(campaigns)));
         discountStrategyContext.applyDiscount(this);
         isCampaignDiscountAppliedBefore = true;
@@ -106,6 +106,7 @@ public class ShoppingCart implements Cart {
     }
 
     public void print() {
+
         Map<String, List<CartItem>> groupedByCategories = getProducts()
                 .stream()
                 .collect(Collectors.groupingBy(cartItem -> cartItem.getProduct().getCategory().getTitle()));

@@ -99,7 +99,7 @@ public class ShoppingCartTest {
         shoppingCart.addItem(cycle, 2);
 
         Campaign campaign = new Campaign(electronic, BigDecimal.valueOf(100), 8, DiscountType.Amount);
-        shoppingCart.applyDiscounts(campaign);
+        shoppingCart.applyCampaigns(campaign);
 
         BigDecimal discountedAmount = shoppingCart.getDiscountHolderMap().get(DiscountHolder.DiscountMethod.CAMPAIGN).getDiscountedAmount();
         assertNotNull(discountedAmount);
@@ -128,7 +128,7 @@ public class ShoppingCartTest {
 
         Campaign electronicCampaign = new Campaign(electronic, BigDecimal.valueOf(100), 1, DiscountType.Amount);
         Campaign foodCampaign = new Campaign(food, BigDecimal.valueOf(25), 2, DiscountType.Rate);
-        shoppingCart.applyDiscounts(electronicCampaign, foodCampaign);
+        shoppingCart.applyCampaigns(electronicCampaign, foodCampaign);
 
         BigDecimal discountedAmount = shoppingCart.getDiscountHolderMap().get(DiscountHolder.DiscountMethod.CAMPAIGN).getDiscountedAmount();
         assertNotNull(discountedAmount);
@@ -157,7 +157,7 @@ public class ShoppingCartTest {
 
         Campaign electronicCampaign = new Campaign(electronic, BigDecimal.valueOf(100), 1, DiscountType.NoImplementation);
         Campaign foodCampaign = new Campaign(food, BigDecimal.valueOf(25), 2, DiscountType.Rate);
-        shoppingCart.applyDiscounts(electronicCampaign, foodCampaign);
+        shoppingCart.applyCampaigns(electronicCampaign, foodCampaign);
     }
 
     @Test
@@ -180,7 +180,7 @@ public class ShoppingCartTest {
 
         Campaign electronicCampaign = new Campaign(electronic, BigDecimal.valueOf(100), 1, DiscountType.Amount);
         Campaign foodCampaign = new Campaign(food, BigDecimal.valueOf(25), 2, DiscountType.Rate);
-        shoppingCart.applyDiscounts(electronicCampaign, foodCampaign);
+        shoppingCart.applyCampaigns(electronicCampaign, foodCampaign);
 
         Coupon coupon = new Coupon(BigDecimal.valueOf(200), BigDecimal.valueOf(100), DiscountType.Amount);
         shoppingCart.applyCoupon(coupon);
@@ -211,7 +211,7 @@ public class ShoppingCartTest {
 
         Campaign electronicCampaign = new Campaign(electronic, BigDecimal.valueOf(100), 1, DiscountType.Amount);
         Campaign foodCampaign = new Campaign(food, BigDecimal.valueOf(25), 2, DiscountType.Rate);
-        shoppingCart.applyDiscounts(electronicCampaign, foodCampaign);
+        shoppingCart.applyCampaigns(electronicCampaign, foodCampaign);
 
         Coupon coupon = new Coupon(BigDecimal.valueOf(200), BigDecimal.valueOf(10), DiscountType.Rate);
         shoppingCart.applyCoupon(coupon);

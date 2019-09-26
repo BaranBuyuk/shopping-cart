@@ -36,7 +36,7 @@ public class CouponDiscountRuleTest {
         shoppingCart.addItem(cycle, 2);
 
         Campaign campaign = new Campaign(electronic, BigDecimal.valueOf(1), 10, DiscountType.Rate);
-        shoppingCart.applyDiscounts(campaign);
+        shoppingCart.applyCampaigns(campaign);
 
         Coupon coupon = new Coupon(BigDecimal.valueOf(1), BigDecimal.valueOf(10), DiscountType.Rate);
 
@@ -65,7 +65,7 @@ public class CouponDiscountRuleTest {
         shoppingCart.addItem(cycle, 2);
 
         Campaign campaign = new Campaign(electronic, BigDecimal.valueOf(1), 10, DiscountType.Rate);
-        shoppingCart.applyDiscounts(campaign);
+        shoppingCart.applyCampaigns(campaign);
 
         Coupon coupon = new Coupon(BigDecimal.valueOf(110000), BigDecimal.valueOf(10), DiscountType.Rate);
 
