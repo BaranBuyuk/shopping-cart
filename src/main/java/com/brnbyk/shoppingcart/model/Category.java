@@ -9,8 +9,6 @@ import java.util.List;
  **/
 public class Category {
 
-    //Composite pattern for category architecture
-
     private String title;
     private Category parent;
     private List<Category> subCategories;

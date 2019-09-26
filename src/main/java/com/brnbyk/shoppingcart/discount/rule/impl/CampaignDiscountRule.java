@@ -7,6 +7,8 @@ import com.brnbyk.shoppingcart.model.ShoppingCart;
 
 import java.util.List;
 
+import static com.brnbyk.shoppingcart.constants.Constants.NO_DISTINCT_CATEGORY;
+
 /**
  * Username = baranbuyuk
  * Date = 25.09.2019 17:56
@@ -36,6 +38,6 @@ public class CampaignDiscountRule implements DiscountRule<Campaign> {
                     .mapToInt(CartItem::getQuantity)
                     .sum();
         }
-        return 0;
+        return NO_DISTINCT_CATEGORY;
     }
 }
